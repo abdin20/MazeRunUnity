@@ -58,9 +58,9 @@ public class ScoreHandler : MonoBehaviour
             {
                 usernameCheck.SetActive(false);
                 //if username good we add it to list
-                scoreList.Add(new Score(this.username, Random.Range(1, 100)));
+                scoreList.Add(new Score(this.username, GlobalScore.currentScore));
             }
-            
+
             GlobalScore.canSubmit=false;
             updateScoreUI();
 
