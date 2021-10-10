@@ -8,8 +8,11 @@ public class PauseScript : MonoBehaviour
     public GameObject canvas;
 
     void Start()
-    {
+    {   
+        //reset variables when camera starts 
         Time.timeScale=1f;
+        GlobalScore.canSubmit=true;
+        canvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,12 +52,14 @@ public class PauseScript : MonoBehaviour
     //restart current scene
     public void Restart(){
         Application.LoadLevel(Application.loadedLevel);
+            GlobalScore.canSubmit=true;
     }
 
   public void Menu(){
 
         //load game scene when play is pressed
         SceneManager.LoadScene("MainMenu");
+         GlobalScore.canSubmit=false;
 
     }
 }

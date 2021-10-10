@@ -11,11 +11,18 @@ using Random = UnityEngine.Random;
 public class ScoreHandler : MonoBehaviour
 {
 
+    public bool canSubmit;
+
+
 
     //list of highscores
     public List<Score> scoreList;
 
+    //reference to ui elements 
     public GameObject usernameCheck;
+    public GameObject scoreText;
+    public GameObject submitButton;
+    public GameObject usernameInput;
 
     //max amount of highscores
     [SerializeField] int maxScores;
@@ -23,7 +30,6 @@ public class ScoreHandler : MonoBehaviour
     //to create a gameobject for the actual score to display
     public GameObject scoreElementPrefab;
 
-    //submit names
     public string username;
 
     //current score that player has to submit
@@ -36,28 +42,39 @@ public class ScoreHandler : MonoBehaviour
     }
 
     public void addScore()
-    {   
-         scoreList= GlobalScore.scoreList;
-        //check for 3 letter username
-        if (this.username.Length != 3)
+    {      
+          
+        //check if player can submit
+        if (GlobalScore.canSubmit)
         {
-            usernameCheck.SetActive(true);
-        }
-        else
-        {
-            usernameCheck.SetActive(false);
-            //if username good we add it to list
-            scoreList.Add(new Score(this.username, Random.Range(1, 100)));
+            scoreList = GlobalScore.scoreList;
+            //check for 3 letter username
+            if (this.username.Length != 3)
+            {
+                usernameCheck.SetActive(true);
+                return;
+            }
+            else
+            {
+                usernameCheck.SetActive(false);
+                //if username good we add it to list
+                scoreList.Add(new Score(this.username, Random.Range(1, 100)));
+            }
+            
+            GlobalScore.canSubmit=false;
             updateScoreUI();
+
         }
 
 
     }
-//
+    //
     void Start()
     {
 
-        scoreList= GlobalScore.scoreList;
+        //can only submit score when player finishes level
+        canSubmit = GlobalScore.canSubmit;
+        scoreList = GlobalScore.scoreList;
         maxScores = 6;
         currentScore = 0;
 
@@ -67,6 +84,17 @@ public class ScoreHandler : MonoBehaviour
     //method to update scoreui once new data is found
     void updateScoreUI()
     {
+
+        //check if player is in state to submit score
+        if(GlobalScore.canSubmit){
+            scoreText.SetActive(true);
+            submitButton.SetActive(true);
+            usernameInput.SetActive(true);
+        }else{
+            scoreText.SetActive(false);
+            submitButton.SetActive(false);
+             usernameInput.SetActive(false);
+        }
 
         var counter = 0;
 
