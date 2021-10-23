@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - key1
+  - door1
+  - key2
+  - door2
+  - door3
+  - key3
+  - leader
+  - pause
   layers:
   - Default
   - TransparentFX

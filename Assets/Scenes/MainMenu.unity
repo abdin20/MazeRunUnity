@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2e3cfb3c0c785a84db7d060724a3322e,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -2513,7 +2514,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1713983275}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1966349971}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1713983275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2901,7 +2914,8 @@ MonoBehaviour:
   submitButton: {fileID: 221485499}
   usernameInput: {fileID: 1028167350}
   maxScores: 5
-  scoreElementPrefab: {fileID: 5367471499496968638, guid: cab95441daec53a4fabe9d4f0bcbd182, type: 3}
+  scoreElementPrefab: {fileID: 5367471499496968638, guid: cab95441daec53a4fabe9d4f0bcbd182,
+    type: 3}
   username: 
   currentScore: 0
 --- !u!114 &1966417513

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CameraScript : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {   
     public float timeElapsed;
     public float startTime; 
@@ -13,12 +13,14 @@ public class CameraScript : MonoBehaviour
     public GameObject player;
 
     public GameObject text;
+
+    public bool lookAt=true;
     // Start is called before the first frame update
     void Start()
     {
         startTime=Time.time;
 
-        playerDistance=(this.transform.position-player.transform.position);
+        // playerDistance=(this.transform.position-player.transform.position);
     }
 
     // Update is called once per frame
@@ -26,9 +28,11 @@ public class CameraScript : MonoBehaviour
     {
         timeElapsed= Time.time-startTime;
         text.GetComponent<TMP_Text>().text="Time: "+ timeElapsed.ToString();
-        GlobalScore.currentScore= Mathf.RoundToInt(Mathf.Sqrt(timeElapsed)*50f);    
 
-        this.transform.position=player.transform.position+playerDistance;
-
+        //only keep updating score until player has won the game
+        if(!GlobalScore.didWin){
+             GlobalScore.currentScore= Mathf.RoundToInt(timeElapsed);    
+        }
+       
     }
 }
